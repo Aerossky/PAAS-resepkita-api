@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,3 +15,6 @@ Route::post('/login', [AuthController::class, 'login']);
 //register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
+
+// Dashboard
+Route::resource('/dashboard', DashboardController::class);

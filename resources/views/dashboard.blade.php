@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <h1 class="text-center">Dashboard Halo</h1>
+    <h1 class="text-center">Dashboard Halo {{ $user->name }}</h1>
+    <h1 class="text-center">API KEY MU {{ $apikey->api_key }}</h1>
 </body>
 
 </html>
