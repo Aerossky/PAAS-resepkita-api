@@ -11,11 +11,27 @@
 </head>
 
 <body>
+    {{-- alert --}}
+    @if (session('status'))
+        <div class="bg-green-500 p-4 text-white text-center mb-6">
+            {{ session('status') }}
+        </div>
+    @elseif ($errors->any())
+    {{-- error --}}
+    <div class="bg-red-500 p-4 text-white text-center mb-6">
+        @foreach ($errors->all() as $error)
+            {{ $error }} <br>
+        @endforeach
+    </div>
+    @endif
+
+
+
     {{-- login form --}}
     <div class="flex justify-center items-center h-screen">
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <h2 class="text-2xl font-bold mb-6">Sign In</h2>
-            <form action="" method="POST">
+            <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
