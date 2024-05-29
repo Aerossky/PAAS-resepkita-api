@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apikey;
+use App\Models\User;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,5 +35,38 @@ class AuthController extends Controller
         return redirect()->back()->withErrors([
             'email' => 'Email atau password salah.',
         ]);
+    }
+
+    public function showRegisterForm()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request){
+
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required'],
+        ]);
+
+        $user = User::create([
+            'name' => $credentials['username'],
+            'email' => $credentials['email'],
+            'password' => bcrypt($credentials['password']),
+        ]);
+
+        // Generate unique API key
+        $apiKey = Uuid::uuid4()->toString();
+
+
+        Apikey::create([
+            'api_key' => $apiKey,
+            'user_id' => $user->id,
+        ]);
+
+        Auth::login($user);
+
+        return redirect('dashboard.index');
     }
 }
