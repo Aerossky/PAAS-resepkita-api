@@ -17,12 +17,14 @@
 
             <div class="flex items-center justify-between">
                 <h1 class="font-bold text-2xl py-5">Users</h1>
-                <div class="">
+                <div class="flex space-x-2">
                     <a href="{{ route('user.create') }}"
-                        class="focus:outline-none text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Create
-                        User</a>
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-yellow-900">Create User</a>
+                    <a href="/admin-dashboard"
+                        class="focus:outline-none text-white bg-red-700 hover:bg-red-500 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-yellow-900">Back</a>
                 </div>
             </div>
+
 
             <div class="p-4 bg-white border shadow-md min-h-40 rounded-lg overflow-x-auto text-center">
                 <table class="min-w-full divide-y divide-gray-300">

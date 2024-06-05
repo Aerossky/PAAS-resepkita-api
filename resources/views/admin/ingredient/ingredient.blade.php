@@ -17,10 +17,11 @@
 
             <div class="flex items-center justify-between">
                 <h1 class="font-bold text-2xl py-5">Ingredients</h1>
-                <div class="">
+                <div class="flex space-x-2">
                     <a href="{{ route('ingredient.create') }}"
-                        class="focus:outline-none text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Create
-                        Ingredient</a>
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-yellow-900">Create Ingredient</a>
+                    <a href="/admin-dashboard"
+                        class="focus:outline-none text-white bg-red-700 hover:bg-red-500 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-yellow-900">Back</a>
                 </div>
             </div>
 
