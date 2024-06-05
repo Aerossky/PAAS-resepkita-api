@@ -2,73 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use App\Http\Resources\RecipeResource;
 
 class RecipeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // validation
+    public function validateApiKey($apikey)
+    {
+        // Check if the api key is valid
+        return  User::where('api_key', $apikey)->first();
+    }
+
+
     public function index(Request $request)
     {
-        $apikey = $request->header('apikey');
-
-        // Check if the api key is valid
-        $user_apikey = User::where('api_key', $apikey)->first();
+        $user_apikey = $this->validateApiKey($request->header('apikey'));
 
         if (!$user_apikey) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(RecipeResource::error('Unauthorized'), 404);
         }
 
         return RecipeResource::collection(Recipe::all());
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // Get recipe by name
+    public function getByName(Request $request, $name)
     {
-        //
+        $user_apikey = $this->validateApiKey($request->header('apikey'));
+
+        if (!$user_apikey) {
+            return response()->json(RecipeResource::error('Unauthorized'), 404);
+        }
+        $recipes = Recipe::where('name', 'LIKE', '%' . $name . '%')->get();
+
+        if ($recipes->isEmpty()) {
+            return response()->json(RecipeResource::error('Recipe not found'), 404);
+        }
+
+        return RecipeResource::collection($recipes);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    // get by ingredients
+    public function getByIngredients(Request $request, $ingredients)
     {
-        //
+        $user_apikey = $this->validateApiKey($request->header('apikey'));
+
+        if (!$user_apikey) {
+            return response()->json(RecipeResource::error('Unauthorized'), 404);
+        }
+
+        $ingredients = explode(',', $ingredients);
+
+        $recipes = Recipe::whereHas('ingredients', function ($query) use ($ingredients) {
+            $query->whereIn('name', $ingredients);
+        })->get();
+
+        if ($recipes->isEmpty()) {
+            return response()->json(RecipeResource::error('Recipe not found'), 404);
+        }
+
+        return RecipeResource::collection($recipes);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Recipe $recipe)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Recipe $recipe)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Recipe $recipe)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Recipe $recipe)
-    {
-        //
-    }
 }
