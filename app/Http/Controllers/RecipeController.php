@@ -43,4 +43,27 @@ class RecipeController extends Controller
 
         return RecipeResource::collection($recipes);
     }
+
+    // get by ingredients
+    public function getByIngredients(Request $request, $ingredients)
+    {
+        $user_apikey = $this->validateApiKey($request->header('apikey'));
+
+        if (!$user_apikey) {
+            return response()->json(RecipeResource::error('Unauthorized'), 404);
+        }
+
+        $ingredients = explode(',', $ingredients);
+
+        $recipes = Recipe::whereHas('ingredients', function ($query) use ($ingredients) {
+            $query->whereIn('name', $ingredients);
+        })->get();
+
+        if ($recipes->isEmpty()) {
+            return response()->json(RecipeResource::error('Recipe not found'), 404);
+        }
+
+        return RecipeResource::collection($recipes);
+    }
+
 }
