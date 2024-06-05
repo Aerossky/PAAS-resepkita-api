@@ -26,8 +26,19 @@ class AuthController extends Controller
         // Coba untuk melakukan otentikasi pengguna
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+        $ingredientController = new IngredientController();
+        $ingredientController->totalIngredient();
+        $userController = new UserController();
+        $userController->totalUser();
             // Jika otentikasi berhasil, arahkan ke dashboard atau halaman lain
-            return redirect()->route('dashboard.index');
+            $user = Auth::user();
+            if ($user->role_id == "1") {
+                // admin
+                return redirect()->intended('/admin-dashboard');
+            } elseif ($user->role_id == "2") {
+                // user
+                return redirect()->intended('/dashboard');
+            }
         }
 
         // Jika otentikasi gagal, kembali ke form login dengan pesan error
@@ -47,6 +58,7 @@ class AuthController extends Controller
             'username' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required'],
+            'role_id' => ['required'],
         ]);
 
         // Generate unique API key
@@ -56,6 +68,7 @@ class AuthController extends Controller
             'name' => $credentials['username'],
             'email' => $credentials['email'],
             'password' => bcrypt($credentials['password']),
+            'role_id' => $credentials['role_id'],
             'api_key' => $apiKey,
         ]);
 
