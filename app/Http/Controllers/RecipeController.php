@@ -28,13 +28,13 @@ class RecipeController extends Controller
         return RecipeResource::collection(Recipe::all());
     }
     // Get recipe by name
-    public function getByName($name)
+    public function getByName(Request $request, $name)
     {
-        // $user_apikey = $this->validateApiKey($request->header('apikey'));
+        $user_apikey = $this->validateApiKey($request->header('apikey'));
 
-        // if (!$user_apikey) {
-        //     return response()->json(RecipeResource::error('Unauthorized'), 404);
-        // }
+        if (!$user_apikey) {
+            return response()->json(RecipeResource::error('Unauthorized'), 404);
+        }
         $recipes = Recipe::where('name', 'LIKE', '%' . $name . '%')->get();
 
         if ($recipes->isEmpty()) {
