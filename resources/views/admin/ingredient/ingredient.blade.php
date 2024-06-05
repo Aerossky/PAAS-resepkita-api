@@ -59,8 +59,6 @@
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                         <div class="flex items-center justify-center space-x-4">
-                                            <a href="{{ route('ingredient.show', $data->id) }}"
-                                                class="text-yellow-600 hover:text-yellow-900">Detail</a>
                                             <a href="{{ route('ingredient.edit', $data->id) }}"
                                                 class="text-yellow-600 hover:text-yellow-900">Edit</a>
                                             <form action="{{ route('ingredient.destroy', $data->id) }}" method="POST">

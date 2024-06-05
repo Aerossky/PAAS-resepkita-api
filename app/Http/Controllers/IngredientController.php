@@ -55,8 +55,8 @@ class IngredientController extends Controller
      */
     public function show($id)
     {
-        $ingredient = Ingredient::findOrFail($id);
-        return view('admin.ingredient.ingredient-detail', ['ingredient' => $ingredient]);
+        // $ingredient = Ingredient::findOrFail($id);
+        // return view('admin.ingredient.ingredient-detail', ['ingredient' => $ingredient]);
     }
 
     /**
@@ -92,7 +92,7 @@ class IngredientController extends Controller
     public function destroy(string $id)
     {
         $ingredient = Ingredient::findOrFail($id);
-        $ingredient->destroy();
+        $ingredient->delete();
         $this->totalIngredient();
 
         return redirect()->route('ingredient.index');

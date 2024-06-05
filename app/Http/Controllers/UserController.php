@@ -42,7 +42,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required|min:10|max:50',
+            'password' => 'required|min:5|max:50',
         ]);
 
         $validatedData = $validator->validated();
@@ -60,8 +60,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return view('admin.user.user-detail', ['user' => $user]);
+        // $user = User::findOrFail($id);
+        // return view('admin.user.user-detail', ['user' => $user]);
     }
 
 
@@ -85,7 +85,7 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'email' => 'required|unique:users,email',
-                'password' => 'nullable|min:10|max:50',
+                'password' => 'nullable|min:5|max:50',
             ]);
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
@@ -94,7 +94,7 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'email' => 'required',
-                'password' => 'nullable|min:10|max:50',
+                'password' => 'nullable|min:5|max:50',
             ]);
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
@@ -118,7 +118,7 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         $user = User::findOrFail($id);
-        $user->destroy();
+        $user->delete();
         $this->totalUser();
 
         return redirect()->route('user.index');

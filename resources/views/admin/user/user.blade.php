@@ -24,7 +24,6 @@
                 </div>
             </div>
 
-            {{-- Content --}}
             <div class="p-4 bg-white border shadow-md min-h-40 rounded-lg overflow-x-auto text-center">
                 <table class="min-w-full divide-y divide-gray-300">
                     <thead class="bg-gray-50 ">
@@ -84,8 +83,6 @@
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                         <div class="flex items-center justify-center space-x-4">
-                                            <a href="{{ route('user.show', $data->id) }}"
-                                                class="text-yellow-600 hover:text-yellow-900">Detail</a>
                                             <a href="{{ route('user.edit', $data->id) }}"
                                                 class="text-yellow-600 hover:text-yellow-900">Edit</a>
                                             <form action="{{ route('user.destroy', $data->id) }}" method="POST">
