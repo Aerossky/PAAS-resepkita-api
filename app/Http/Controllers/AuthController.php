@@ -58,7 +58,6 @@ class AuthController extends Controller
             'username' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required'],
-            'role_id' => ['required'],
         ]);
 
         // Generate unique API key
@@ -68,7 +67,7 @@ class AuthController extends Controller
             'name' => $credentials['username'],
             'email' => $credentials['email'],
             'password' => bcrypt($credentials['password']),
-            'role_id' => $credentials['role_id'],
+            'role_id' => 2,
             'api_key' => $apiKey,
         ]);
 
