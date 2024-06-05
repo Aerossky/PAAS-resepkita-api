@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use App\Http\Resources\RecipeResource;
 
 class RecipeController extends Controller
 {
@@ -18,7 +20,7 @@ class RecipeController extends Controller
         $user_apikey = User::where('api_key', $apikey)->first();
 
         if (!$user_apikey) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(RecipeResource::error('Unauthorized'), 404);
         }
 
         return RecipeResource::collection(Recipe::all());

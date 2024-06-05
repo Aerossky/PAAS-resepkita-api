@@ -14,13 +14,24 @@ class RecipeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'instructions' => $this->instructions,
-            'ingredients' => $this->ingredients->pluck('name'),
-            'created_at' => $this->created_at,
+        return [
+            'message' => "Success",
+            'data' => $this->resource ? [
+                'id' => $this->id,
+                'name' => $this->name,
+                'description' => $this->description,
+                'instructions' => $this->instructions,
+                'ingredients' => $this->ingredients->pluck('name'),
+                'created_at' => date_format($this->created_at, 'Y-m-d'),
+            ] : null,
+        ];
+    }
+
+    public static function error($message = null)
+    {
+        return [
+            'message' => $message,
+            'data' => null,
         ];
     }
 }
