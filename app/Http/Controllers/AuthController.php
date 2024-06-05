@@ -72,4 +72,8 @@ class AuthController extends Controller
 
         return redirect('login');
     }
+
+    public function test(){
+        return view('admin.dashboard');
+    }
 }
