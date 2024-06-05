@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Apikey;
 use App\Models\User;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
@@ -50,21 +49,17 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
+        // Generate unique API key
+        $apiKey = Uuid::uuid4()->toString();
+
         $user = User::create([
             'name' => $credentials['username'],
             'email' => $credentials['email'],
             'password' => bcrypt($credentials['password']),
+            'api_key' => $apiKey,
         ]);
 
         // Generate unique API key
-        $apiKey = Uuid::uuid4()->toString();
-
-
-        Apikey::create([
-            'api_key' => $apiKey,
-            'user_id' => $user->id,
-        ]);
-
         Auth::login($user);
 
         return redirect()->route('dashboard.index');

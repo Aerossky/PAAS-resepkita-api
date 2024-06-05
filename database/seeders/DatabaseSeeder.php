@@ -19,11 +19,13 @@ class DatabaseSeeder extends Seeder
                 'name' => 'John Doe',
                 'email' => 'john@gmail.com',
                 'password' => Hash::make('anjay123'),
+                'api_key' => '123456789',
             ],
             [
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('anjay123'),
+                'api_key' => '123456798',
             ],
         ];
 
@@ -33,6 +35,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $item['name'],
                 'email' => $item['email'],
                 'password' => $item['password'],
+                'api_key' => $item['api_key'],
             ]);
         }
     }

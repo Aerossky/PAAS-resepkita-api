@@ -46,8 +46,4 @@ class User extends Authenticatable
         ];
     }
 
-    public function apikey(): HasOne
-    {
-        return $this->hasOne(Apikey::class);
-    }
 }
