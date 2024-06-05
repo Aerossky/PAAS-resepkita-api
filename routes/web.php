@@ -21,3 +21,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard
 Route::resource('/dashboard', DashboardController::class);
+
+// Admin Dashboard
+Route::get('/admin-dashboard', function () {
+    return view('admin.dashboard');
+});
+
+Route::get('/admin-user', function () {
+    return view('admin.user.user');
+});
+
+Route::get('/admin-ingredient', function () {
+    return view('admin.ingredient.ingredient');
+});
