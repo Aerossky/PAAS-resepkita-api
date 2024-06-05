@@ -13,4 +13,6 @@ Route::get('/tes', function () {
     return 'Hello World';
 });
 
+Route::get('/recipes/{name}', [RecipeController::class, 'getByName']);
 Route::resource('/recipes', RecipeController::class);
+
