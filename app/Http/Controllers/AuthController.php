@@ -26,6 +26,10 @@ class AuthController extends Controller
         // Coba untuk melakukan otentikasi pengguna
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+        $ingredientController = new IngredientController();
+        $ingredientController->totalIngredient();
+        $userController = new UserController();
+        $userController->totalUser();
             // Jika otentikasi berhasil, arahkan ke dashboard atau halaman lain
             $user = Auth::user();
             if ($user->role_id == "1") {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class IngredientController extends Controller
 {
@@ -13,6 +14,12 @@ class IngredientController extends Controller
     public function index(Request $request)
     {
         //
+    }
+
+    public function totalIngredient()
+    {
+        $totalIngredients = Ingredient::count();
+        Session::put('totalIngredients', $totalIngredients);
     }
 
     /**
