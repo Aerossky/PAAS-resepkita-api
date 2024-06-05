@@ -11,3 +11,5 @@ Route::get('/user', function (Request $request) {
 Route::get('/tes', function () {
     return 'Hello World';
 });
+
+Route::resource('/recipes', RecipeController::class);
