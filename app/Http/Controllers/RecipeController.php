@@ -10,9 +10,18 @@ class RecipeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $apikey = $request->header('apikey');
+
+        // Check if the api key is valid
+        $user_apikey = User::where('api_key', $apikey)->first();
+
+        if (!$user_apikey) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        return RecipeResource::collection(Recipe::all());
     }
 
     /**
