@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\RecipeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
@@ -19,7 +18,7 @@ Route::get('/recipes/ingredient/{name}', [RecipeController::class, 'getByIngredi
 Route::resource('/recipes', RecipeController::class);
 
 
-Route::fallback(function(){
+Route::fallback(function () {
     return response()->json([
         'message' => 'Endpoint not found. Please check the URL.'
     ], 404);

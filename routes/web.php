@@ -7,7 +7,15 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IngredientController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('recipe');
+});
+
+Route::get('/dokumentasi', function () {
+    return view('documentation');
+});
+
+Route::get('/tentang', function () {
+    return view('about');
 });
 
 // Login

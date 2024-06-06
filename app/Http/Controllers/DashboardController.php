@@ -20,7 +20,7 @@ class DashboardController extends Controller
         // $apikey = $user->apikey;
 
         //
-        return view('dashboard', ['user' => $user]);
+        return view('recipe', ['user' => $user]);
     }
 
     /**
