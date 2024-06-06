@@ -13,9 +13,8 @@ Route::get('/tes', function () {
     return 'Hello World';
 });
 
-Route::get('/recipes/name/{name}', [RecipeController::class, 'getByName']);
-Route::get('/recipes/ingredient/{name}', [RecipeController::class, 'getByIngredients']);
-Route::resource('/recipes', RecipeController::class);
+
+Route::resource('/resep', RecipeController::class);
 
 
 Route::fallback(function () {
