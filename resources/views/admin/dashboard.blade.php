@@ -1,14 +1,13 @@
-
-{{-- @extends('layouts.main') --}}
+@extends('layouts.main')
 {{-- Title --}}
-{{-- @section('title')
+@section('title')
     Admin Dashboard
 @endsection
 
 @section('content')
-<h1>Hello cok</h1>
-@endsection --}}
-
+    <h1>Hello cok</h1>
+@endsection
+{{--
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,4 +86,4 @@
 </body>
 
 </html>
-
+ --}}
