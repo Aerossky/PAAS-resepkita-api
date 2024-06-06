@@ -5,34 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign In | Recipeku</title>
+    <title>Register | Recipeku</title>
     {{-- tailwind --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    {{-- alert --}}
-    @if (session('status'))
-        <div class="bg-green-500 p-4 text-white text-center mb-6">
-            {{ session('status') }}
-        </div>
-    @elseif ($errors->any())
-        {{-- error --}}
-        <div class="bg-red-500 p-4 text-white text-center mb-6">
-            @foreach ($errors->all() as $error)
-                {{ $error }} <br>
-            @endforeach
-        </div>
-    @endif
-
     <div class="md:flex mx-auto">
         <div class="w-screen md:w-2/3 h-screen flex flex-col justify-center items-center">
             <div class="w-1/2 flex flex-col">
                 <div class="flex justify-center flex-col">
-                    <h1 class="mb-2 text-start text-xl md:text-3xl justify-start">Selamat Datang Di <span
-                            class="font-bold text-customOrange">ResepKita</span></h1>
+                    <h1 class="mb-2 text-start text-xl md:text-3xl justify-start">Yuk isi data <span
+                            class="font-bold text-customOrange">Dirimu</span></h1>
                     {{-- <h3 class="mb-2 text-start text-xl font-light">Yuk masuk biar ga kepo</h3> --}}
-                    <form action="{{ route('login') }}" method="POST" class="max-w-md md:w-full mb-2">
+                    <form action="{{ route('register') }}" method="POST" class="max-w-md md:w-full mb-2">
+                        <div class="mb-5">
+                            <label for="nama" class="block mb-1 md:text-lg font-medium text-black">Nama</label>
+                            <input type="nama" id="nama"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="Joseph Idaman Wanita" required />
+                        </div>
                         <div class="mb-5">
                             <label for="email" class="block mb-1 md:text-lg font-medium text-black">Email</label>
                             <input type="email" id="email"
@@ -53,10 +45,8 @@
                     <div class="max-w-md md:w-full">
                         <div class="flex justify-center">
                             <p class="font-normal text-sm">
-                                Belum punya
-                                akun? <a href="{{ route('register') }}"
-                                    class="text-customOrange font-medium text-sm mt-2 hover:text-customOrangeTua">Daftar
-                                    disini</a>
+                                Sudah punya akun? <a href="{{ route('login') }}"
+                                    class="text-customOrange font-medium text-sm mt-2 hover:text-customOrangeTua">Masuk sini!</a>
                             </p>
 
                         </div>
@@ -71,4 +61,4 @@
     </div>
 </body>
 
-</html>
+</html>l

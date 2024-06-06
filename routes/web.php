@@ -42,6 +42,3 @@ Route::get('/admin-ingredient', function () {
 Route::resource('ingredient', IngredientController::class);
 
 
-Route::get('/test', function () {
-    return view('auth.loginui');
-});
