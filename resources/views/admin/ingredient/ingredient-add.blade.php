@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
+{{-- Title --}}
+@section('title')
+    Add Ingredient
+@endsection
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Resepku | Add Ingredient</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body>
-
-    <x-navbar />
+{{-- content --}}
+@section('content')
     <div class="max-w-screen-xl mx-auto px-4 py-8">
         <div id="admin-ingredient-add" class="mb-8 bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 p-6">
 
@@ -42,8 +36,8 @@
                         <!-- Nama -->
                         <div class="mb-4 col-span-2">
                             <label for="name" class="block text-sm font-medium text-gray-600">Name</label>
-                            <input type="text" id="name" name="name"
-                                class="mt-1 p-2 w-full border rounded-md" required>
+                            <input type="text" id="name" name="name" class="mt-1 p-2 w-full border rounded-md"
+                                required>
                         </div>
                         <!-- Tombol Kirim -->
                         <div class="">
@@ -57,6 +51,4 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+@endsection

@@ -85,4 +85,8 @@ class AuthController extends Controller
 
         return redirect('login');
     }
+
+    public function indexAdmin(){
+        return view('admin.dashboard');
+    }
 }

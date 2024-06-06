@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
+{{-- Title --}}
+@section('title')
+    Admin Ingredient List
+@endsection
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Resepku | Admin Ingredient</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body>
-
-    <x-navbar />
+{{-- content --}}
+@section('content')
     <div class="max-w-screen-xl mx-auto px-4 py-8">
         <div id="admin-dashboard" class="mb-8 bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 p-6">
 
@@ -19,7 +13,8 @@
                 <h1 class="font-bold text-2xl py-5">Ingredients</h1>
                 <div class="flex space-x-2">
                     <a href="{{ route('ingredient.create') }}"
-                        class="focus:outline-none text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-yellow-900">Create Ingredient</a>
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-yellow-900">Create
+                        Ingredient</a>
                     <a href="/admin-dashboard"
                         class="focus:outline-none text-white bg-red-700 hover:bg-red-500 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-yellow-900">Back</a>
                 </div>
@@ -50,12 +45,10 @@
                         @else
                             @foreach ($ingredient as $data)
                                 <tr>
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                         {{ $loop->iteration }}
                                     </td>
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                         {{ $data->name }}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -65,7 +58,8 @@
                                             <form action="{{ route('ingredient.destroy', $data->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
+                                                <button type="submit"
+                                                    class="text-red-600 hover:text-red-900">Delete</button>
                                             </form>
                                         </div>
                                     </td>
@@ -79,6 +73,4 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+@endsection
