@@ -10,15 +10,15 @@
                     <li>
                         <a href="#"
                             class="block py-2 px-3 text-white bg-[#E36161] rounded md:bg-transparent md:text-[#E36161] md:p-0"
-                            aria-current="page">Home</a>
+                            aria-current="page">Resep</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161] md:p-0">Documentation</a>
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161] md:p-0">Dokumentasi</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161] md:p-0">About</a>
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161] md:p-0">Tentang</a>
                     </li>
                 </ul>
             </div>
