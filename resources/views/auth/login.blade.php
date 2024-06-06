@@ -33,15 +33,16 @@
                             class="font-bold text-resep-merah-200">ResepKita</span></h1>
                     {{-- <h3 class="mb-2 text-start text-xl font-light">Yuk masuk biar ga kepo</h3> --}}
                     <form action="{{ route('login') }}" method="POST" class="max-w-md md:w-full mb-2">
+                        @csrf
                         <div class="mb-5">
                             <label for="email" class="block mb-1 md:text-lg font-medium text-black">Email</label>
-                            <input type="email" id="email"
+                            <input type="email" id="email" name="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                                 placeholder="pelanggan@resepkita.com" required />
                         </div>
                         <div class="mb-5">
                             <label for="password" class="block mb-1 md:text-lg font-medium text-black">Password</label>
-                            <input type="password" id="password"
+                            <input type="password" id="password" name="password"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                                 placeholder="********" required />
                         </div>
