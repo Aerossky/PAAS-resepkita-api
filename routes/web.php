@@ -13,6 +13,7 @@ Route::get('/', function () {
 // Login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/test', [AuthController::class, 'test'])->name('test');
 
 //register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
