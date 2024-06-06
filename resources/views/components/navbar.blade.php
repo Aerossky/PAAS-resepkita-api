@@ -1,24 +1,24 @@
-<nav class="bg-white border-gray-200">
+<nav class="{{ Request::is('/') ? '' : 'bg-white border-gray-200' }} z-40" id="mainNav">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="{{ asset('images/logo.png') }}" class="h-24 md:h-28" alt="ResepKu Logo" />
+            <img src="{{ asset('images/logo2.png') }}" class="h-12 md:h-16" alt="ResepKu Logo" />
         </a>
         <div class="flex-grow flex items-center justify-center">
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul
-                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent">
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-white bg-[#E36161] rounded md:bg-transparent md:text-[#E36161] md:p-0"
+                        <a href="/"
+                            class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]' }}"
                             aria-current="page">Resep</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161] md:p-0">Dokumentasi</a>
+                        <a href="/dokumentasi"
+                            class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-white' : (Request::is('dokumentasi') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]') }}">Dokumentasi</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161] md:p-0">Tentang</a>
+                        <a href="/tentang"
+                            class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-white' : (Request::is('tentang') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]') }}">Tentang</a>
                     </li>
                 </ul>
             </div>
@@ -26,7 +26,7 @@
         <div class="flex items-center">
             @auth
                 <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                    class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161] md:p-0 md:w-auto">
+                    class="flex items-center justify-between w-full py-2 px-3 {{ Request::is('/') ? 'text-white' : 'text-gray-900' }} rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161] md:p-0 md:w-auto">
                     Halo, {{ Auth::user()->name }}
                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">

@@ -1,70 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-layout>
+    <x-slot:title>
+        Resep
+    </x-slot>
+    {{-- Main --}}
+    <section class="relative bg-gray-900 text-white mt-[-100px]">
+        <!-- Video Background -->
+        <video class="absolute top-0 left-0 w-full h-full object-cover opacity-75" autoplay muted loop>
+            <source src="{{ asset('videos/resepkita.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Resepku | Dashboard</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+        <!-- Overlay Content -->
+        <div class="relative mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+            <div class="relative mx-auto max-w-3xl text-center">
+                <h1
+                    class="bg-gradient-to-r from-[#E36161] via-[#ECAB69] to-[#E36161] bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+                    Temukan Resep Favoritmu.
+                    <span class="sm:block"> Mudah, Cepat, dan Lezat. </span>
+                </h1>
 
-<body>
-    <x-navbar />
+                <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+                    Jelajahi resep dari berbagai bahan dan buat hidangan lezat untuk keluarga dan
+                    teman-temanmu. Dengan ResepKita, memasak jadi lebih menyenangkan dan mudah.
+                </p>
 
-    <!-- Main Content -->
-    <div class="max-w-screen-xl mx-auto px-4 py-8">
+                <div class="mt-8 flex flex-wrap justify-center gap-4">
+                    <a class="block w-full rounded border border-[#E36161] bg-[#E36161] px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-[#E36161] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E36161] active:text-opacity-75 sm:w-auto transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+                        href="#">
+                        Mulai Sekarang
+                    </a>
 
-        <!-- GET All Recipes -->
-        <div id="get-all-recipes" class="mb-8 bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 p-6">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">GET All Recipes</h2>
-            <div class="flex items-center mb-2">
-                <span class="api-method">GET</span>
-                <span class="ml-2 text-gray-700">Endpoint:</span>
-                <code class="ml-1 code">/api/recipes</code>
+                    <a class="block w-full rounded border border-[#E36161] px-12 py-3 text-sm font-medium text-[#E36161] hover:bg-[#E36161] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E36161] active:bg-[#E36161] sm:w-auto transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+                        href="#">
+                        Pelajari Lebih Lanjut
+                    </a>
+                </div>
             </div>
-            <p class="text-gray-700 mb-4">Mengembalikan daftar semua resep.</p>
-            <a href="/api/recipes" target="_blank"
-                class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">Coba
-                Sekarang</a>
         </div>
 
-        <!-- GET Recipe by Name -->
-        <div id="get-recipe-by-name"
-            class="mb-8 bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 p-6">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">GET Recipe by Name</h2>
-            <div class="flex items-center mb-2">
-                <span class="api-method">GET</span>
-                <span class="ml-2 text-gray-700">Endpoint:</span>
-                <code class="ml-1 code">/api/recipes/search?name={nama_resep}</code>
-            </div>
-            <p class="text-gray-700 mb-4">Mengembalikan resep dengan nama tertentu.</p>
-            <a href="/api/recipes/search?name=nama_resep" target="_blank"
-                class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">Coba
-                Sekarang</a>
+        <!-- Attribution -->
+        <div class="absolute bottom-0 left-0 w-full bg-gray-900 bg-opacity-50 text-white text-sm text-center p-2">
+            Video by <a
+                href="https://www.pexels.com/video/sprinkling-rock-salt-as-seasoning-on-a-dish-being-cooked-3195369/"
+                target="_blank" class="text-blue-400 hover:underline">Pexels</a>
         </div>
+    </section>
 
-        <!-- GET Recipe by Ingredient -->
-        <div id="get-recipe-by-ingredient"
-            class="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 p-6">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">GET Recipe by Ingredient</h2>
-            <div class="flex items-center mb-2">
-                <span class="api-method">GET</span>
-                <span class="ml-2 text-gray-700">Endpoint:</span>
-                <code class="ml-1 code">/api/recipes/search?ingredient={nama_bahan}</code>
+
+
+    {{-- Content --}}
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900">
+                    Temukan Resep Lezat
+                </h2>
+                <p class="mt-4 text-lg text-gray-500">
+                    Temukan berbagai macam resep lezat dari API makanan kami.
+                </p>
             </div>
-            <p class="text-gray-700 mb-4">Mengembalikan daftar resep yang menggunakan bahan tertentu.</p>
-            <a href="/api/recipes/search?ingredient=nama_bahan" target="_blank"
-                class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">Coba
-                Sekarang</a>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    <div class="col-span-1 bg-white rounded-lg shadow">
+                        <img class="w-full h-48 object-cover"
+                            src="https://via.placeholder.com/300x200.png?text=Recipe+1" alt="Delicious Pancakes">
+                        <div class="p-6">
+                            <h3 class="text-lg font-medium text-gray-900">Delicious Pancakes</h3>
+                            <p class="mt-2 text-sm text-gray-500">Fluffy pancakes with syrup and fresh berries.</p>
+                            <a href="#"
+                                class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                View Recipe
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-    </div>
-    </div>
+    </section>
 
 
-    <x-footer />
-
-</body>
-
-</html>
+</x-layout>

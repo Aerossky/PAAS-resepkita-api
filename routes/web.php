@@ -10,6 +10,14 @@ Route::get('/', function () {
     return view('recipe');
 });
 
+Route::get('/dokumentasi', function () {
+    return view('documentation');
+});
+
+Route::get('/tentang', function () {
+    return view('about');
+});
+
 // Login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
