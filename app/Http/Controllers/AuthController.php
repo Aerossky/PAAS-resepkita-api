@@ -26,10 +26,10 @@ class AuthController extends Controller
         // Coba untuk melakukan otentikasi pengguna
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-        $ingredientController = new IngredientController();
-        $ingredientController->totalIngredient();
-        $userController = new UserController();
-        $userController->totalUser();
+            $ingredientController = new IngredientController();
+            $ingredientController->totalIngredient();
+            $userController = new UserController();
+            $userController->totalUser();
             // Jika otentikasi berhasil, arahkan ke dashboard atau halaman lain
             $user = Auth::user();
             if ($user->role_id == "1") {
@@ -37,7 +37,7 @@ class AuthController extends Controller
                 return redirect()->intended('/admin-dashboard');
             } elseif ($user->role_id == "2") {
                 // user
-                return redirect()->intended('/dashboard');
+                return redirect('/');
             }
         }
 
@@ -52,13 +52,13 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
 
         $credentials = $request->validate([
             'username' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required'],
-            'role_id' => ['required'],
         ]);
 
         // Generate unique API key
@@ -68,14 +68,14 @@ class AuthController extends Controller
             'name' => $credentials['username'],
             'email' => $credentials['email'],
             'password' => bcrypt($credentials['password']),
-            'role_id' => $credentials['role_id'],
+            'role_id' => 2,
             'api_key' => $apiKey,
         ]);
 
         // Generate unique API key
         Auth::login($user);
 
-        return redirect()->route('dashboard.index');
+        return redirect('/');
     }
 
     public function logout(Request $request)
@@ -83,7 +83,12 @@ class AuthController extends Controller
         Auth::logout();
 
 
-        return redirect('login');
+        return redirect('/');
+    }
+
+    public function test()
+    {
+        return view('admin.dashboard');
     }
 
     public function indexAdmin(){

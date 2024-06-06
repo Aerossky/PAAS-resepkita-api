@@ -6,64 +6,49 @@ use App\Models\User;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use App\Http\Resources\RecipeResource;
+use App\Http\Resources\RecipeCollection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class RecipeController extends Controller
 {
-    // validation
-    public function validateApiKey($apikey)
+    // Validasi API Key
+    private function validateApiKey($apikey)
     {
-        // Check if the api key is valid
-        return  User::where('api_key', $apikey)->first();
+        try {
+            return User::where('api_key', $apikey)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            throw new \Exception('Unauthorized', 401);
+        }
     }
 
-
+    // Menampilkan semua resep atau berdasarkan filter
     public function index(Request $request)
     {
-        $user_apikey = $this->validateApiKey($request->header('apikey'));
-
-        if (!$user_apikey) {
-            return response()->json(RecipeResource::error('Unauthorized'), 404);
+        try {
+            $this->validateApiKey($request->header('api_key'));
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], $e->getCode());
         }
 
-        return RecipeResource::collection(Recipe::all());
-    }
-    // Get recipe by name
-    public function getByName(Request $request, $name)
-    {
-        $user_apikey = $this->validateApiKey($request->header('apikey'));
+        $query = Recipe::query();
 
-        if (!$user_apikey) {
-            return response()->json(RecipeResource::error('Unauthorized'), 404);
+        if ($request->has('nama')) {
+            $query->where('name', 'LIKE', '%' . $request->nama . '%');
         }
-        $recipes = Recipe::where('name', 'LIKE', '%' . $name . '%')->get();
+
+        if ($request->has('bahan')) {
+            $ingredients = explode(',', $request->bahan);
+            $query->whereHas('ingredients', function ($q) use ($ingredients) {
+                $q->whereIn('name', $ingredients);
+            });
+        }
+
+        $recipes = $query->get();
 
         if ($recipes->isEmpty()) {
-            return response()->json(RecipeResource::error('Recipe not found'), 404);
+            return response()->json(['error' => 'Recipe not found'], 404);
         }
 
-        return RecipeResource::collection($recipes);
+        return new RecipeCollection($recipes);
     }
-
-    // get by ingredients
-    public function getByIngredients(Request $request, $ingredients)
-    {
-        $user_apikey = $this->validateApiKey($request->header('apikey'));
-
-        if (!$user_apikey) {
-            return response()->json(RecipeResource::error('Unauthorized'), 404);
-        }
-
-        $ingredients = explode(',', $ingredients);
-
-        $recipes = Recipe::whereHas('ingredients', function ($query) use ($ingredients) {
-            $query->whereIn('name', $ingredients);
-        })->get();
-
-        if ($recipes->isEmpty()) {
-            return response()->json(RecipeResource::error('Recipe not found'), 404);
-        }
-
-        return RecipeResource::collection($recipes);
-    }
-
 }
