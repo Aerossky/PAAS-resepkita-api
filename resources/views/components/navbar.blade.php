@@ -1,7 +1,7 @@
 <nav class="bg-white border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="{{ asset('images/logo.png') }}" class="h-20 md:h-32" alt="ResepKu Logo" />
+            <img src="{{ asset('images/logo.png') }}" class="h-24 md:h-28" alt="ResepKu Logo" />
         </a>
         <div class="flex-grow flex items-center justify-center">
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
