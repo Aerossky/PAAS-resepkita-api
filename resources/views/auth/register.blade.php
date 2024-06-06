@@ -11,12 +11,12 @@
 </head>
 
 <body>
-    <div class="md:flex mx-auto">
-        <div class="w-screen md:w-2/3 h-screen flex flex-col justify-center items-center">
+    <div class="md:flex mx-auto h-screen">
+        <div class="w-screen md:w-2/3 flex flex-col justify-center items-center">
             <div class="w-1/2 flex flex-col">
                 <div class="flex justify-center flex-col">
                     <h1 class="mb-2 text-start text-xl md:text-3xl justify-start">Yuk isi data <span
-                            class="font-bold text-customOrange">Dirimu</span></h1>
+                            class="font-bold text-resep-merah-200">Dirimu</span></h1>
                     {{-- <h3 class="mb-2 text-start text-xl font-light">Yuk masuk biar ga kepo</h3> --}}
                     <form action="{{ route('register') }}" method="POST" class="max-w-md md:w-full mb-2">
                         <div class="mb-5">
@@ -39,14 +39,14 @@
                         </div>
                         <div class="flex justify-center">
                             <button type="submit"
-                                class="text-white bg-customOrange hover:bg-customOrangeTua focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Masuk</button>
+                                class="text-white bg-resep-merah-200 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Masuk</button>
                         </div>
                     </form>
                     <div class="max-w-md md:w-full">
                         <div class="flex justify-center">
                             <p class="font-normal text-sm">
                                 Sudah punya akun? <a href="{{ route('login') }}"
-                                    class="text-customOrange font-medium text-sm mt-2 hover:text-customOrangeTua">Masuk sini!</a>
+                                    class="text-resep-merah-200 font-medium text-sm mt-2 hover:text-red-700">Masuk sini!</a>
                             </p>
 
                         </div>
@@ -55,10 +55,10 @@
                 </div>
             </div>
         </div>
-        <div class="hidden md:block md:w-1/3 md:overflow-hidden">
+        <div class="hidden md:block md:w-1/3 md:h-screen overflow-hidden">
             <img src="assets/img/foodbg.webp" alt="" class=" h-screen w-screen object-cover">
         </div>
     </div>
 </body>
 
-</html>l
+</html>

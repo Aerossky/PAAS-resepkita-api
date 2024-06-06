@@ -1,4 +1,4 @@
-<footer class="bg-gray-50">
+<footer class="bg-gray-50 mt-auto">
     <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             <div class="flex justify-center text-resep-merah-200 sm:justify-start">

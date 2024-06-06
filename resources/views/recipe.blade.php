@@ -62,15 +62,15 @@
 
             <div class="mt-10">
                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                    <div class="col-span-1 bg-white rounded-lg shadow">
-                        <img class="w-full h-48 object-cover"
-                            src="https://via.placeholder.com/300x200.png?text=Recipe+1" alt="Delicious Pancakes">
+                    <div class="col-span-1 bg-white rounded-lg shadow transform hover:-translate-y-3 transition-transform duration-300">
+                        <img class="w-full h-48 object-cover rounded-t-lg"
+                            src="images/jovan.jpg" alt="Delicious Pancakes">
                         <div class="p-6">
-                            <h3 class="text-lg font-medium text-gray-900">Delicious Pancakes</h3>
+                            <h3 class="text-lg font-bold text-gray-900">Delicious Jovan</h3>
                             <p class="mt-2 text-sm text-gray-500">Fluffy pancakes with syrup and fresh berries.</p>
                             <a href="#"
-                                class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                View Recipe
+                                class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-resep-merah-200 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Lihat Resep
                             </a>
                         </div>
                     </div>

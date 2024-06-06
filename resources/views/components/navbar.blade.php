@@ -57,7 +57,7 @@
                 </div>
             @else
                 <a href="{{ route('login') }}"
-                    class="text-white bg-[#E36161] hover:bg-[#E36161] focus:ring-4 focus:ring-[#E36161] font-medium rounded-sm text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Login</a>
+                    class="text-white bg-[#E36161] hover:bg-[#E36161] focus:ring-4 focus:ring-[#E36161] font-medium rounded-md text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Login</a>
             @endauth
         </div>
     </div>
