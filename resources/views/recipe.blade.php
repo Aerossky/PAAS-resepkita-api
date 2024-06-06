@@ -6,7 +6,7 @@
     <section class="relative bg-gray-900 text-white mt-[-100px]">
         <!-- Video Background -->
         <video class="absolute top-0 left-0 w-full h-full object-cover opacity-75" autoplay muted loop>
-            <source src="{{ asset('videos/resepkita.mp4') }}" type="video/mp4">
+            <source src="{{ asset('videos/3195369-uhd_3840_2160_25fps.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
