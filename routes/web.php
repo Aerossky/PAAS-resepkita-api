@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminRecipeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -34,15 +35,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::resource('/dashboard', DashboardController::class);
 
 // Admin Dashboard
-Route::get('/admin-dashboard', function () {
-    return view('admin.dashboard');
-});
-
-Route::get('/admin-user', function () {
-    return view('admin.user.user');
-});
-
 Route::resource('user', UserController::class);
+Route::resource('ingredient', IngredientController::class);
+Route::resource('recipe', AdminRecipeController::class);
+
+Route::get('/admin-dashboard',[AuthController::class, 'indexAdmin'])->name('admin.dashboard');
 
 Route::get('/admin-ingredient', function () {
     return view('admin.ingredient.ingredient');

@@ -17,5 +17,3 @@
         <span class="block text-sm text-gray-500 text-center mt-6 md:mt-12 dark:text-gray-400">© 2024 ResepKita™. All Rights Reserved.</span>
     </div>
 </footer>
-
-

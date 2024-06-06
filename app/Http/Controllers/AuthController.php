@@ -90,4 +90,8 @@ class AuthController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function indexAdmin(){
+        return view('admin.dashboard');
+    }
 }
