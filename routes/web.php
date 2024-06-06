@@ -41,3 +41,5 @@ Route::get('/admin-ingredient', function () {
 });
 
 Route::resource('ingredient', IngredientController::class);
+
+
