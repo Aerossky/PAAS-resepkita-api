@@ -30,7 +30,7 @@
             <div class="w-1/2 flex flex-col">
                 <div class="flex justify-center flex-col">
                     <h1 class="mb-2 text-start text-xl md:text-3xl justify-start">Selamat Datang Di <span
-                            class="font-bold text-customOrange">ResepKita</span></h1>
+                            class="font-bold text-resep-merah-200">ResepKita</span></h1>
                     {{-- <h3 class="mb-2 text-start text-xl font-light">Yuk masuk biar ga kepo</h3> --}}
                     <form action="{{ route('login') }}" method="POST" class="max-w-md md:w-full mb-2">
                         <div class="mb-5">
@@ -47,7 +47,7 @@
                         </div>
                         <div class="flex justify-center">
                             <button type="submit"
-                                class="text-white bg-customOrange hover:bg-customOrangeTua focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Masuk</button>
+                                class="text-white bg-resep-merah-200 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Masuk</button>
                         </div>
                     </form>
                     <div class="max-w-md md:w-full">
@@ -55,7 +55,7 @@
                             <p class="font-normal text-sm">
                                 Belum punya
                                 akun? <a href="{{ route('register') }}"
-                                    class="text-customOrange font-medium text-sm mt-2 hover:text-customOrangeTua">Daftar
+                                    class="text-resep-merah-200 font-medium text-sm mt-2 hover:text-red-700">Daftar
                                     disini</a>
                             </p>
 

@@ -14,6 +14,7 @@
     <link rel="icon" href="{{ asset('images/logo2.png') }}" type="image/png">
     <title>ResepKita | {{ $title ?? 'Halaman' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://kit.fontawesome.com/a99a8c7d21.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="flex flex-col min-h-screen">
