@@ -42,10 +42,4 @@ Route::group(['middleware' => 'isAdmin'], function () {
     Route::resource('recipe', AdminRecipeController::class);
 
     Route::get('/admin-dashboard', [AuthController::class, 'indexAdmin'])->name('admin.dashboard');
-
-    Route::get('/admin-ingredient', function () {
-        return view('admin.ingredient.ingredient');
-    });
-
-    Route::resource('ingredient', IngredientController::class);
 });
