@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredient;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class AdminRecipeController extends Controller
 {
@@ -16,12 +19,19 @@ class AdminRecipeController extends Controller
         return view('admin.recipe.recipe', compact('recipe'));
     }
 
+    public function totalIngredient()
+    {
+        $totalRecipes = Recipe::count();
+        Session::put('totalRecipes', $totalRecipes);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('admin.recipe.create');
+        $ingredients = Ingredient::all();
+        return view('admin.recipe.create', compact('ingredients'));
     }
 
     /**
@@ -29,7 +39,24 @@ class AdminRecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'instruction' => 'required',
+            'ingredients' => 'required|array',
+        ]);
+
+        // Simpan recipe
+        $recipe = Recipe::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'instruction' => $request->instruction,
+        ]);
+
+        // Attach ingredients ke recipe
+        $recipe->ingredients()->attach($request->ingredients);
+
+        return redirect()->route('recipe.index')->with('success', 'Recipe created successfully');
     }
 
     /**
@@ -45,8 +72,11 @@ class AdminRecipeController extends Controller
      */
     public function edit(string $id)
     {
-        $recipeId = Recipe::findOrFail($id);
-        return view('admin.recipe.create', compact('recipeId'));
+        $recipe = Recipe::findOrFail($id);
+        $ingredients = Ingredient::all(); // Mengambil semua bahan untuk checkbox
+        $selectedIngredients = $recipe->ingredients->pluck('id')->toArray(); // Bahan yang dipilih
+
+        return view('admin.recipe.edit', compact('recipe', 'ingredients', 'selectedIngredients'));
     }
 
     /**
@@ -54,7 +84,25 @@ class AdminRecipeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'instruction' => 'required',
+            'ingredients' => 'required|array',
+        ]);
+
+        // Update recipe
+        $recipe = Recipe::findOrFail($id);
+        $recipe->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'instruction' => $request->instruction,
+        ]);
+
+        // Sync ingredients
+        $recipe->ingredients()->sync($request->ingredients);
+
+        return redirect()->route('recipe.index')->with('success', 'Recipe updated successfully');
     }
 
     /**
