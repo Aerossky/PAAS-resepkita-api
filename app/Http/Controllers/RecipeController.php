@@ -25,7 +25,7 @@ class RecipeController extends Controller
     public function index(Request $request)
     {
         try {
-            $this->validateApiKey($request->header('api_key'));
+            $this->validateApiKey($request->header('api-key'));
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], $e->getCode());
         }
