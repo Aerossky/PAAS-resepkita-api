@@ -33,11 +33,15 @@
                     </li>
                     <li>
                         <a href="{{ route('user.index') }}"
-                            class="block py-2 px-3 rounded text-resep-merah-100 hover:bg-resep-hitam md:text-white md:bg-transparent md:hover:text-resep-merah-200 md:hover:bg-transparent md:p-0">User</a>
+                            class="block py-2 px-3 rounded text-resep-merah-100 hover:bg-resep-hitam md:text-white md:bg-transparent md:hover:text-resep-merah-200 md:hover:bg-transparent md:p-0">Users</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 rounded text-resep-merah-100 hover:bg-resep-hitam md:text-white md:bg-transparent md:hover:text-resep-merah-200 md:hover:bg-transparent md:p-0">Settings</a>
+                        <a href="{{ route('recipe.index') }}"
+                            class="block py-2 px-3 rounded text-resep-merah-100 hover:bg-resep-hitam md:text-white md:bg-transparent md:hover:text-resep-merah-200 md:hover:bg-transparent md:p-0">Recipes</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('ingredient.index') }}"
+                            class="block py-2 px-3 rounded text-resep-merah-100 hover:bg-resep-hitam md:text-white md:bg-transparent md:hover:text-resep-merah-200 md:hover:bg-transparent md:p-0">Ingredients</a>
                     </li>
                 </ul>
             </div>

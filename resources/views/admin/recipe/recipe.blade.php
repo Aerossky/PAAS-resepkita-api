@@ -34,7 +34,15 @@
                             </th>
                             <th scope="col"
                                 class="py-3 pl-4 pr-3 text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-6">
+                                Description
+                            </th>
+                            <th scope="col"
+                                class="py-3 pl-4 pr-3 text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-6">
                                 Instruction
+                            </th>
+                            <th scope="col"
+                                class="py-3 pl-4 pr-3 text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-6">
+                                Ingridients
                             </th>
                             <th scope="col"
                                 class="py-3 pl-4 pr-3 text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-6">
@@ -56,12 +64,25 @@
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                         {{ $data->name }}
                                     </td>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 truncate overflow-hidden">
+                                    <td
+                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 truncate overflow-hidden">
+                                        {{ $data->description }}
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 truncate overflow-hidden">
                                         {{ $data->instruction }}
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 truncate overflow-hidden">
+                                        @foreach ($data->ingredients as $ingredient)
+                                            {{ $ingredient->name }}@if (!$loop->last)
+                                                ,
+                                            @endif
+                                        @endforeach
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                         <div class="flex items-center justify-center space-x-4">
-                                            <a href="{{ route('ingredient.edit', $data->id) }}"
+                                            <a href="{{ route('recipe.edit', $data->id) }}"
                                                 class="text-yellow-600 hover:text-yellow-900">Edit</a>
                                             <form action="{{ route('recipe.destroy', $data->id) }}" method="POST">
                                                 @csrf
