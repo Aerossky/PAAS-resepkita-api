@@ -20,31 +20,32 @@ Route::get('/tentang', function () {
 });
 
 // Login
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/test', [AuthController::class, 'test'])->name('test');
+// middleware group
+Route::group(['middleware' => 'isLogin'], function () {
 
-//register
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/test', [AuthController::class, 'test'])->name('test');
 
+    //register
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Dashboard
-Route::resource('/dashboard', DashboardController::class);
 
 // Admin Dashboard
-Route::resource('user', UserController::class);
-Route::resource('ingredient', IngredientController::class);
-Route::resource('recipe', AdminRecipeController::class);
+Route::group(['middleware' => 'isAdmin'], function () {
+    Route::resource('user', UserController::class);
+    Route::resource('ingredient', IngredientController::class);
+    Route::resource('recipe', AdminRecipeController::class);
 
-Route::get('/admin-dashboard',[AuthController::class, 'indexAdmin'])->name('admin.dashboard');
+    Route::get('/admin-dashboard', [AuthController::class, 'indexAdmin'])->name('admin.dashboard');
 
-Route::get('/admin-ingredient', function () {
-    return view('admin.ingredient.ingredient');
+    Route::get('/admin-ingredient', function () {
+        return view('admin.ingredient.ingredient');
+    });
+
+    Route::resource('ingredient', IngredientController::class);
 });
-
-Route::resource('ingredient', IngredientController::class);
-
-
