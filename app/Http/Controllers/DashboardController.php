@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,15 +13,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // USER DATA
-        $user = Auth::user();
+        $recipes = Recipe::select('name', 'description')->get();
 
-
-        // API KEY
-        // $apikey = $user->apikey;
-
-        //
-        return view('recipe', ['user' => $user]);
+        return view('recipe', ['recipes' => $recipes]);
     }
 
     /**

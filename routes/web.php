@@ -6,18 +6,18 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IngredientController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-Route::get('/', function () {
-    return view('recipe');
-});
 
-Route::get('/dokumentasi', function () {
-    return view('documentation');
-});
+Route::get('/', [DashboardController::class, 'index']);
 
 Route::get('/tentang', function () {
     return view('about');
 });
+
+Route::get('/dokumentasi', function () {
+    return view('documentation');
+})->middleware('auth');
 
 // Login
 // middleware group
