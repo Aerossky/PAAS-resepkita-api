@@ -9,7 +9,7 @@
             id="sidebar">
             <label for="GET" class="block py-2 md:px-4 font-bold text-resep-merah-200">Pendahuluan</label>
             <ul class="w-full">
-                <li><a href="#" class="block py-2 md:w-full md:px-10 text-center md:text-start" id="menu1"
+                <li><a href="#" class="block py-2 md:w-full md:px-10 text-center md:text-start bg-gray-200 rounded-lg" id="menu1"
                         onclick="changeContent('menu1')">Memulai</a>
                 </li>
                 <li><a href="#" class="block py-2 md:w-full md:px-10 text-center md:text-start" id="menu2"
