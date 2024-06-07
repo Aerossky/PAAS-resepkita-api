@@ -186,6 +186,7 @@
                         </table>
                     </div>
                     <h3 class="text-lg md:text-xl mt-5 font-medium text-resep-merah-200">Contoh Response</h3>
+
                     <ul class="w-fit flex mt-5">
                         <li><button class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border font-bold bg-resep-merah-200 text-white"
                                 id="getAllSuccessButton" onclick="changeResponse()">Berhasil</button>
@@ -326,6 +327,7 @@
                         </table>
                     </div>
                     <h3 class="text-lg md:text-xl mt-5 font-medium text-resep-merah-200">Contoh Response</h3>
+
                     <ul class="w-fit flex mt-5">
                         <li><button class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border font-bold bg-resep-merah-200 text-white"
                                 id="getByNameSuccessButton" onclick="changeResponse()">Berhasil</button>
@@ -455,6 +457,7 @@
                         </table>
                     </div>
                     <h3 class="text-lg md:text-xl mt-5 font-medium text-resep-merah-200">Contoh Response</h3>
+
                     <ul class="w-fit flex mt-5">
                         <li><button class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border font-bold bg-resep-merah-200 text-white"
                                 id="getByIngSuccessButton" onclick="changeResponse()">Berhasil</button>
