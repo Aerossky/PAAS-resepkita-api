@@ -12,10 +12,12 @@
                             class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]' }}"
                             aria-current="page">Resep</a>
                     </li>
-                    <li>
-                        <a href="/dokumentasi"
-                            class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-white' : (Request::is('dokumentasi') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]') }}">Dokumentasi</a>
-                    </li>
+                    @auth
+                        <li>
+                            <a href="/dokumentasi"
+                                class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-white' : (Request::is('dokumentasi') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]') }}">Dokumentasi</a>
+                        </li>
+                    @endauth
                     <li>
                         <a href="/tentang"
                             class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-white' : (Request::is('tentang') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]') }}">Tentang</a>
