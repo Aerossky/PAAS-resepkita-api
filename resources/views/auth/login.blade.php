@@ -25,11 +25,11 @@
         </div>
     @endif
 
-    <div class="md:flex mx-auto">
-        <div class="w-screen md:w-2/3 h-screen flex flex-col justify-center items-center">
-            <div class="w-1/2 flex flex-col">
-                <div class="flex justify-center flex-col">
-                    <h1 class="mb-2 text-start text-xl md:text-3xl justify-start">Selamat Datang Di <span
+    <div class="md:flex mx-auto w-screen">
+        <div class="w-screen md:w-3/4 h-screen flex flex-col justify-center items-center">
+            <div class="md:w-1/2 flex flex-col items-center">
+                <div class="flex justify-center flex-col md:w-4/5">
+                    <h1 class="mb-2 text-start text-xl md:text-3xl">Selamat Datang Di <span
                             class="font-bold text-resep-merah-200">ResepKita</span></h1>
                     {{-- <h3 class="mb-2 text-start text-xl font-light">Yuk masuk biar ga kepo</h3> --}}
                     <form action="{{ route('login') }}" method="POST" class="max-w-md md:w-full mb-2">
@@ -66,8 +66,8 @@
                 </div>
             </div>
         </div>
-        <div class="hidden md:block md:w-1/3 md:overflow-hidden">
-            <img src="assets/img/foodbg.webp" alt="" class=" h-screen w-screen object-cover">
+        <div class="hidden md:block md:w-1/4 md:overflow-hidden">
+            <img src="assets/img/foodbg.webp" alt="" class=" h-screen w-full object-cover">
         </div>
     </div>
 </body>

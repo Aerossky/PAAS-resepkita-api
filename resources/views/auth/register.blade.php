@@ -11,18 +11,18 @@
 </head>
 
 <body>
-    <div class="md:flex mx-auto h-screen">
-        <div class="w-screen md:w-2/3 flex flex-col justify-center items-center">
-            <div class="w-1/2 flex flex-col">
-                <div class="flex justify-center flex-col">
-                    <h1 class="mb-2 text-start text-xl md:text-3xl justify-start">Yuk isi data <span
+    <div class="md:flex mx-auto w-screen">
+        <div class="w-screen md:w-3/4 h-screen flex flex-col justify-center items-center">
+            <div class="md:w-1/2 flex flex-col items-center">
+                <div class="flex justify-center flex-col md:w-4/5">
+                    <h1 class="mb-2 text-start text-xl md:text-3xl">Yuk isi data <span
                             class="font-bold text-resep-merah-200">Dirimu</span></h1>
                     {{-- <h3 class="mb-2 text-start text-xl font-light">Yuk masuk biar ga kepo</h3> --}}
                     <form action="{{ route('register') }}" method="POST" class="max-w-md md:w-full mb-2">
                         @csrf
                         <div class="mb-5">
                             <label for="username" class="block mb-1 md:text-lg font-medium text-black">Username</label>
-                            <input type="username" id="username" name="username"
+                            <input type="text" id="username" name="username"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                                 placeholder="Joseph Idaman Wanita" required />
                         </div>
@@ -56,8 +56,8 @@
                 </div>
             </div>
         </div>
-        <div class="hidden md:block md:w-1/3 md:h-screen overflow-hidden">
-            <img src="assets/img/foodbg.webp" alt="" class=" h-screen w-screen object-cover">
+        <div class="hidden md:block md:w-1/4 md:h-screen overflow-hidden">
+            <img src="assets/img/foodbg.webp" alt="" class=" h-screen w-full object-cover">
         </div>
     </div>
 </body>
