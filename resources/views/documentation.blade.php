@@ -5,12 +5,13 @@
 
     <div class="flex mx-auto md:w-3/4 md:mt-3 flex-col md:flex-row">
         <!-- Sidebar -->
-        <div class="bg-white h-fit md:h-screen mb-5 md:mb-0 text-black flex flex-col items-center md:w-fit md:block "
+        <div class="hidden bg-white h-fit md:h-screen mb-5 md:mb-0 text-black flex flex-col items-center md:w-fit md:block "
             id="sidebar">
             <label for="GET" class="block py-2 md:px-4 font-bold text-resep-merah-200">Pendahuluan</label>
             <ul class="w-full">
-                <li><a href="#" class="block py-2 md:w-full md:px-10 text-center md:text-start bg-gray-200 rounded-lg" id="menu1"
-                        onclick="changeContent('menu1')">Memulai</a>
+                <li><a href="#"
+                        class="block py-2 md:w-full md:px-10 text-center md:text-start bg-gray-200 rounded-lg"
+                        id="menu1" onclick="changeContent('menu1')">Memulai</a>
                 </li>
                 <li><a href="#" class="block py-2 md:w-full md:px-10 text-center md:text-start" id="menu2"
                         onclick="changeContent('menu2')">Cara
@@ -36,9 +37,41 @@
                 <!-- Tambahkan menu lainnya sesuai kebutuhan -->
             </ul>
         </div>
+        <!-- Dropdown for Mobile -->
+        <div class="md:hidden bg-white text-black flex flex-col mb-2 md:mb-0" id="mobileDropdown">
+            <div class="relative">
+                <button id="mobileDropdownToggle"
+                    class="py-2 px-4 font-bold text-resep-merah-200 w-full text-left bg-white rounded-lg flex justify-center items-center">
+                    <p id="mobileDropdownToggleText">Memulai</p>
+                    <i class="fa-solid fa-chevron-down ms-1" style="color: #000000;"></i>
+                </button>
+                <div id="mobileDropdownContent" class="hidden absolute bg-white rounded-lg mt-1 py-2 w-full shadow-lg">
+                    <ul class="w-full">
+                        <li><p class="flex justify-center font-bold text-resep-merah-200">Pendahuluan</p></li>
+                        <li><a href="#" class="block py-2 px-10 text-center menuMobile bg-gray-200 rounded-lg"
+                                id="menu1mobile" onclick="changeContent('menu1')">Memulai</a></li>
+                        <li><a href="#" class="block py-2 px-10 text-center menuMobile" id="menu2mobile"
+                                onclick="changeContent('menu2')">Cara Pakai</a></li>
+                    </ul>
+                    <ul class="w-full">
+                        <li><p class="flex justify-center font-bold text-resep-merah-200">Penggunaan</p></li>
+                        <li><a href="#" class="block py-2 px-10 text-center menuMobile"
+                                id="menu3mobile" onclick="changeContent('menu3')">GET
+                                All Resep</a></li>
+                        <li><a href="#" class="block py-2 px-10 text-center menuMobile" id="menu4mobile"
+                                onclick="changeContent('menu4')">GET
+                                Resep By Nama</a></li>
+                        <li><a href="#" class="block py-2 px-10 text-center menuMobile" id="menu5mobile"
+                                onclick="changeContent('menu5')">GET Resep
+                                By Bahan</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Add more dropdown menus as needed -->
+        </div>
 
         <!-- Konten Utama -->
-        <div class="flex-1 md:me-5 m-5 ms-0 md:my-0 md:px-5 md:border-l-2" id="mainContent">
+        <div class="flex-1 px-2 md:me-5 m-5 ms-0 md:my-0 md:px-5 md:border-l-2" id="mainContent">
             <!-- Konten Utama di sini -->
             <div id="menu1Content" class="container m-auto">
                 <div class="w-fit">
@@ -64,6 +97,27 @@
                         <li>GET All Resep</li>
                         <li>GET Resep By Nama</li>
                     </ul>
+                    <h2 class="text-xl md:text-2xl mt-5 font-medium text-resep-merah-200">URL Dasar</h2>
+                    <p class="text-base md:text-lg mt-5 text-wrap">Berikut merupakan URL dasar yang harus digunakan
+                        untuk mengakses API ResepKita. Semua permintaan API harus dimulai dengan URL dasar ini.</p>
+                    <div class="mt-2 w-full md:w-fit md:mt-5 relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full md:w-fit text-sm text-left rtl:text-right text-gray-500 ">
+                            <thead class="text-base md:text-lg text-resep-kuning-100 uppercase bg-resep-merah-200">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 border-b-2 border-e-2">
+                                        URL Dasar
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b ">
+                                    <td class="px-6 py-4 text-black text-base md:text-lg border-e-2">
+                                        https://resepkita.aerossky.site/
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <h2 class="text-xl md:text-2xl mt-5 font-medium text-resep-merah-200">Dukungan</h2>
                     <p class="text-base md:text-lg mt-5 text-wrap">Jika anda mengalami masalah dalam penggunaan API ini,
                         tim dukungan
@@ -104,7 +158,8 @@
                                 class="text-resep-merah-200 italic">disini</a>.</li>
                     </ul>
 
-                    <h2 class="text-xl md:text-2xl mt-5 text-wrap font-medium text-resep-merah-200">4. Pilih Metode yang
+                    <h2 class="text-xl md:text-2xl mt-5 text-wrap font-medium text-resep-merah-200">4. Pilih Metode
+                        yang
                         Diinginkan</h2>
                     <p class="text-base md:text-lg mt-5 text-wrap">Di dalam dokumentasi, Anda dapat memilih metode atau
                         endpoint yang ingin Anda gunakan. Setiap
@@ -148,7 +203,7 @@
                                         GET
                                     </td>
                                     <td class="px-6 py-4 text-black text-base md:text-lg">
-                                        http://127.0.0.1:8000/api/resep
+                                        /api/resep
                                     </td>
                                 </tr>
                             </tbody>
@@ -188,7 +243,8 @@
                     <h3 class="text-lg md:text-xl mt-5 font-medium text-resep-merah-200">Contoh Response</h3>
 
                     <ul class="w-fit flex mt-5">
-                        <li><button class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border font-bold bg-resep-merah-200 text-white"
+                        <li><button
+                                class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border font-bold bg-resep-merah-200 text-white"
                                 id="getAllSuccessButton" onclick="changeResponse()">Berhasil</button>
                         </li>
                         <li><button class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border"
@@ -278,7 +334,7 @@
                                         GET
                                     </td>
                                     <td class="px-6 py-4 text-black text-base md:text-lg">
-                                        http://127.0.0.1:8000/api/resep?nama={nama_resep}
+                                        /api/resep?nama={nama_resep}
                                     </td>
                                 </tr>
                             </tbody>
@@ -329,7 +385,8 @@
                     <h3 class="text-lg md:text-xl mt-5 font-medium text-resep-merah-200">Contoh Response</h3>
 
                     <ul class="w-fit flex mt-5">
-                        <li><button class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border font-bold bg-resep-merah-200 text-white"
+                        <li><button
+                                class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border font-bold bg-resep-merah-200 text-white"
                                 id="getByNameSuccessButton" onclick="changeResponse()">Berhasil</button>
                         </li>
                         <li><button class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border"
@@ -408,7 +465,7 @@
                                         GET
                                     </td>
                                     <td class="px-6 py-4 text-black text-base md:text-lg">
-                                        http://127.0.0.1:8000/api/resep?bahan={nama_bahan}
+                                        /api/resep?bahan={nama_bahan}
                                     </td>
                                 </tr>
                             </tbody>
@@ -459,7 +516,8 @@
                     <h3 class="text-lg md:text-xl mt-5 font-medium text-resep-merah-200">Contoh Response</h3>
 
                     <ul class="w-fit flex mt-5">
-                        <li><button class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border font-bold bg-resep-merah-200 text-white"
+                        <li><button
+                                class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border font-bold bg-resep-merah-200 text-white"
                                 id="getByIngSuccessButton" onclick="changeResponse()">Berhasil</button>
                         </li>
                         <li><button class="block py-2 w-full px-5 md:w-full md:px-10 text-center md:text-start border"
@@ -530,8 +588,17 @@
                 menu.classList.remove("bg-gray-200");
                 menu.classList.remove("rounded-lg");
             });
-            document.getElementById(menu).classList.add("bg-gray-200");
-            document.getElementById(menu).classList.add("rounded-lg");
+
+            var menus = document.querySelectorAll(".menuMobile");
+            menus.forEach(function(menu) {
+                menu.classList.remove("bg-gray-200");
+                menu.classList.remove("rounded-lg");
+            });
+
+            document.getElementById(menu + "mobile").classList.add("bg-gray-200");
+            document.getElementById(menu + "mobile").classList.add("rounded-lg");
+
+            document.getElementById('mobileDropdownToggleText').innerHTML = document.getElementById(menu + "mobile").innerHTML;
 
         }
 
@@ -604,6 +671,13 @@
                 codeBlock.innerHTML = codeBlock.innerHTML.split('\n').map(function(line, index) {
                     return '<span class="line-number">' + (index + 1) + '</span>' + line;
                 }).join('\n');
+            });
+
+            const mobileDropdownToggle = document.getElementById('mobileDropdownToggle');
+            const mobileDropdownContent = document.getElementById('mobileDropdownContent');
+
+            mobileDropdownToggle.addEventListener('click', function() {
+                mobileDropdownContent.classList.toggle('hidden');
             });
         });
     </script>

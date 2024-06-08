@@ -63,7 +63,72 @@
             @endauth
         </div>
     </div>
+    <!-- Navbar for Mobile -->
+    <div class="md:hidden bg-white text-black w-full fixed top-0 left-0 z-50" id="mobileNavbar">
+        <div class="max-w-screen-xl flex justify-between items-center mx-auto p-4">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="{{ asset('images/logo2.png') }}" class="h-8 md:h-10" alt="ResepKu Logo" />
+            </a>
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuToggle" class="text-black focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Navbar Menu -->
+        <div id="mobileMenu" class="hidden bg-white text-black py-3">
+            <ul class="flex flex-col items-center">
+                <li>
+                    <a href="/"
+                        class="flex justify-center items-center px-4 py-2 rounded-lg w-screen text-base {{ Request::is('/') ? 'bg-gray-200' : 'bg-white' }}">
+                        Resep
+                    </a>
+                </li>
+                @auth
+                    <li>
+                        <a href="/dokumentasi"
+                            class="flex justify-center items-center px-4 py-2 rounded w-screen text-base {{ Request::is('dokumentasi') ? 'bg-gray-200' : 'bg-white' }}">
+                            Dokumentasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tentang"
+                            class="flex justify-center items-center px-4 py-2 rounded w-screen text-base {{ Request::is('tentang') ? 'bg-gray-200' : 'bg-white' }}">
+                            Tentang
+                        </a>
+                    </li>
+                    <li>
+                        <button id="mobileCopyApiKey"
+                            class="flex justify-center items-center px-4 py-2 rounded focus:outline-none w-full text-left text-base">
+                            Copy API Key
+                        </button>
+                    </li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST" id="mobileLogoutForm">
+                            @csrf
+                            <button type="submit"
+                                class="flex justify-center items-center px-4 py-2 rounded w-full text-left focus:outline-none text-base">
+                                Sign out
+                            </button>
+                        </form>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ route('login') }}"
+                            class="flex justify-center items-center px-4 py-2 rounded focus:outline-none text-base">
+                            Login
+                        </a>
+                    </li>
+                @endauth
+            </ul>
+        </div>
+    </div>
 </nav>
+
+
 
 <script>
     @auth
@@ -81,7 +146,33 @@
                     });
             });
         }
+        // Copy API Key on Mobile
+        const mobileCopyApiKey = document.getElementById('mobileCopyApiKey');
+        if (mobileCopyApiKey) {
+            mobileCopyApiKey.addEventListener('click', function() {
+                const apiKey = "{{ Auth::user()->api_key }}";
+                navigator.clipboard.writeText(apiKey)
+                    .then(() => {
+                        alert('API Key copied to clipboard');
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy:', err);
+                    });
+            });
+        }
     });
     @endauth
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+
+    });
 </script>
 </body>
