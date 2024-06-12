@@ -228,7 +228,7 @@
                             <tbody>
                                 <tr class="bg-white border-b ">
                                     <td scope="row" class="px-6 py-4 text-base md:text-lg text-black border-e-2">
-                                        api_key
+                                        api-key
                                     </td>
                                     <td class="px-6 py-4 text-black text-base md:text-lg border-e-2 italic">
                                         string
@@ -260,10 +260,10 @@
         "data": [
             {
                 "id": 1,
-                "name": "Pancakes",
-                "description": "A delicious breakfast treat.",
-                "instructions": null,
-                "ingredients": [
+                "nama": "Pancakes",
+                "deskripsi": "A delicious breakfast treat.",
+                "instruksi": null,
+                "bahan": [
                     "Sugar",
                     "Flour",
                     "Butter",
@@ -273,10 +273,10 @@
             },
             {
                 "id": 2,
-                "name": "Scrambled Eggs",
-                "description": "A simple breakfast dish.",
-                "instructions": null,
-                "ingredients": [
+                "nama": "Scrambled Eggs",
+                "deskripsi": "A simple breakfast dish.",
+                "instruksi": null,
+                "bahan": [
                     "Salt",
                     "Butter",
                     "Eggs"
@@ -359,7 +359,7 @@
                             <tbody>
                                 <tr class="bg-white border-b ">
                                     <td scope="row" class="px-6 py-4 text-base md:text-lg text-black border-e-2">
-                                        api_key
+                                        api-key
                                     </td>
                                     <td class="px-6 py-4 text-black text-base md:text-lg border-e-2 italic">
                                         string
@@ -402,10 +402,10 @@
         "data": [
             {
                 "id": 1,
-                "name": "Pancakes",
-                "description": "A delicious breakfast treat.",
-                "instructions": null,
-                "ingredients": [
+                "nama": "Pancakes",
+                "deskripsi": "A delicious breakfast treat.",
+                "instruksi": null,
+                "bahan": [
                     "Sugar",
                     "Flour",
                     "Butter",
@@ -490,7 +490,7 @@
                             <tbody>
                                 <tr class="bg-white border-b ">
                                     <td scope="row" class="px-6 py-4 text-base md:text-lg text-black border-e-2">
-                                        api_key
+                                        api-key
                                     </td>
                                     <td class="px-6 py-4 text-black text-base md:text-lg border-e-2 italic">
                                         string
@@ -533,10 +533,10 @@
     "data": [
         {
             "id": 1,
-            "name": "Pancakes",
-            "description": "A delicious breakfast treat.",
-            "instructions": null,
-            "ingredients": [
+            "nama": "Pancakes",
+            "deskripsi": "A delicious breakfast treat.",
+            "instruksi": null,
+            "bahan": [
                 "Sugar",
                 "Flour",
                 "Butter",
