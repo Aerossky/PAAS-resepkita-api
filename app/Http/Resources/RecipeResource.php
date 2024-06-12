@@ -16,11 +16,11 @@ class RecipeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'instructions' => $this->instructions,
-            'ingredients' => $this->ingredients->pluck('name'),
-            'created_at' => date_format($this->created_at, 'Y-m-d'),
+            'nama' => $this->name,
+            'deskripsi' => $this->description,
+            'instruksi' => $this->instruction,
+            'bahan' => $this->ingredients->pluck('name')->toArray(),
+            'created_at' => $this->created_at->format('Y-m-d'),
         ];
     }
 
