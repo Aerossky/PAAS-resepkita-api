@@ -12,12 +12,10 @@
                                 class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]' }}"
                                 aria-current="page">Resep</a>
                         </li>
-                        @auth
-                            <li>
-                                <a href="/dokumentasi"
-                                    class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-white' : (Request::is('dokumentasi') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]') }}">Dokumentasi</a>
-                            </li>
-                        @endauth
+                        <li>
+                            <a href="/dokumentasi"
+                                class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-white' : (Request::is('dokumentasi') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]') }}">Dokumentasi</a>
+                        </li>
                         <li>
                             <a href="/tentang"
                                 class="block py-2 px-3 rounded md:p-0 {{ Request::is('/') ? 'text-white' : (Request::is('tentang') ? 'text-[#E36161]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#E36161]') }}">Tentang</a>
@@ -73,7 +71,8 @@
                 <button id="mobileMenuToggle" class="text-black focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7">
                         </path>
                     </svg>
                 </button>
@@ -127,9 +126,9 @@
             </div>
         </div>
     </nav>
-    
-    
-    
+
+
+
     <script>
         @auth
         document.addEventListener("DOMContentLoaded", function() {
@@ -162,17 +161,17 @@
             }
         });
         @endauth
-    
+
         document.addEventListener("DOMContentLoaded", function() {
             // Mobile Menu Toggle
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const mobileMenu = document.getElementById('mobileMenu');
-    
+
             mobileMenuToggle.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
             });
-    
-    
+
+
         });
     </script>
     </body>
