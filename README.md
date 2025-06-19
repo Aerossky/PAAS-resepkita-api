@@ -1,167 +1,289 @@
-# ResepKu API
+# 🍳 ResepKu API - Recipe Management System
 
-Proyek ini adalah API sederhana untuk mencari dan mendapatkan resep makanan. API ini dibangun menggunakan Laravel dan menyediakan endpoint untuk mengambil semua resep, mencari resep berdasarkan bahan, dan mencari resep berdasarkan nama.
+<div align="center">
+  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/API-REST-blue?style=for-the-badge" alt="REST API">
+</div>
 
-## Fitur
+<div align="center">
+  <h4>🥘 API sederhana dan powerful untuk mengelola koleksi resep makanan dengan sistem pencarian yang fleksibel</h4>
+</div>
 
--   Mengambil semua resep
--   Mencari resep berdasarkan bahan
--   Mencari resep berdasarkan nama
+---
 
-## Endpoint API
+## 📖 Tentang Proyek
 
-### 1. Mendapatkan Semua Resep
+**ResepKu API** adalah RESTful API yang dibangun menggunakan Laravel untuk mengelola koleksi resep makanan. API ini menyediakan fitur pencarian resep berdasarkan nama dan bahan dengan sistem autentikasi menggunakan API key yang aman dan mudah digunakan.
 
--   **Endpoint**: `/api/resep`
--   **Metode HTTP**: GET
--   **Headers**: `apikey: {apikeymu}`
--   **Deskripsi**: Mengambil semua resep yang tersedia.
--   **Contoh Response**:
-    ```json
+### 🎯 Mengapa ResepKu API?
+
+- **Pencarian Fleksibel** - Cari resep berdasarkan nama atau bahan yang tersedia
+- **API Key Authentication** - Sistem autentikasi yang aman dan mudah diintegrasikan
+- **RESTful Design** - Mengikuti standar REST API yang konsisten
+- **Laravel Framework** - Dibangun dengan framework yang robust dan scalable
+
+## ✨ Fitur Utama
+
+- 📚 **Koleksi Resep Lengkap** - Database resep dengan informasi detail
+- 🔍 **Pencarian by Nama** - Temukan resep berdasarkan nama masakan
+- 🥕 **Pencarian by Bahan** - Cari resep berdasarkan bahan yang tersedia
+- 🔐 **API Key Security** - Sistem autentikasi yang aman
+- 📱 **RESTful Response** - Format JSON yang konsisten dan mudah digunakan
+- 🚀 **Fast & Lightweight** - Response time yang cepat
+
+## 🚀 Teknologi yang Digunakan
+
+### Backend
+- **Laravel** - PHP framework untuk pengembangan API yang robust
+- **PHP** - Server-side programming language
+- **MySQL** - Database management system untuk penyimpanan data
+
+### Authentication
+- **API Key Authentication** - Sistem autentikasi berbasis API key
+- **Laravel Sanctum/Passport** - Token-based authentication
+
+### Tools & Development
+- **Composer** - Dependency manager untuk PHP
+- **Artisan** - Laravel's command-line interface
+- **Git** - Version control system
+
+## 📊 API Endpoints
+
+### Base URL
+```
+http://127.0.0.1:8000/api
+```
+
+### Authentication
+Semua endpoint memerlukan API key di header:
+```
+Headers: {
+  "apikey": "your_api_key_here"
+}
+```
+
+### 📋 Available Endpoints
+
+#### 1. Get All Recipes
+```http
+GET /api/resep
+```
+
+**Response:**
+```json
+{
+  "message": "Success",
+  "data": [
     {
-        "message": "Success",
-        "data": [
-            {
-                "id": 1,
-                "name": "Pancakes",
-                "description": "A delicious breakfast treat.",
-                "instructions": null,
-                "ingredients": ["Sugar", "Flour", "Butter", "Eggs"],
-                "created_at": "2024-06-07"
-            },
-            {
-                "id": 2,
-                "name": "Scrambled Eggs",
-                "description": "A simple breakfast dish.",
-                "instructions": null,
-                "ingredients": ["Salt", "Butter", "Eggs"],
-                "created_at": "2024-06-07"
-            }
-        ]
+      "id": 1,
+      "name": "Pancakes",
+      "description": "A delicious breakfast treat.",
+      "instructions": null,
+      "ingredients": ["Sugar", "Flour", "Butter", "Eggs"],
+      "created_at": "2024-06-07"
     }
-    ```
+  ]
+}
+```
 
-### 2. Mencari Resep Berdasarkan Bahan
+#### 2. Search by Ingredient
+```http
+GET /api/resep?bahan=string
+```
 
--   **Endpoint**: `/api/resep?bahan=string`
--   **Metode HTTP**: GET
--   **Headers**: `apikey: {apikeymu}`
--   **Deskripsi**: Mencari resep yang menggunakan bahan tertentu.
--   **Contoh Response**:
-    ```json
-    {
-        "message": "Success",
-        "data": [
-            {
-                "id": 2,
-                "name": "Scrambled Eggs",
-                "description": "A simple breakfast dish.",
-                "instructions": null,
-                "ingredients": ["Salt", "Butter", "Eggs"],
-                "created_at": "2024-06-07"
-            }
-        ]
-    }
-    ```
+**Parameters:**
+- `bahan` (string) - Ingredient name to search for
 
-### 3. Mencari Resep Berdasarkan Nama
+**Example:**
+```http
+GET /api/resep?bahan=eggs
+```
 
--   **Endpoint**: `/api/resep?bahan=string`
--   **Metode HTTP**: GET
--   **Headers**: `apikey: {apikeymu}`
--   **Deskripsi**: Mencari resep berdasarkan nama.
--   **Contoh Response**:
-    ```json
-    {
-        "message": "Success",
-        "data": [
-            {
-                "id": 1,
-                "name": "Pancakes",
-                "description": "A delicious breakfast treat.",
-                "instructions": null,
-                "ingredients": ["Sugar", "Flour", "Butter", "Eggs"],
-                "created_at": "2024-06-07"
-            }
-        ]
-    }
-    ```
+#### 3. Search by Recipe Name
+```http
+GET /api/resep?nama=string
+```
 
-## Instalasi
+**Parameters:**
+- `nama` (string) - Recipe name to search for
 
-Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek ini di lingkungan lokal Anda:
+**Example:**
+```http
+GET /api/resep?nama=pancakes
+```
 
-1. **Clone repositori ini**:
+## 🛠️ Instalasi & Setup
 
-    ```bash
-    git clone https://github.com/username/resep-makanan-api.git](https://github.com/Aerossky/PAAS-resepku-api.git
-    ```
+### Prasyarat
+- PHP >= 8.0
+- Composer
+- MySQL
+- Laravel 9+
 
-2. **Masuk ke direktori proyek**:
+### Langkah Instalasi
 
-    ```bash
-    cd resep-makanan-api
-    ```
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/Aerossky/PAAS-resepku-api.git
+   cd PAAS-resepku-api
+   ```
 
-3. **Install dependencies menggunakan Composer**:
+2. **Install Dependencies**
+   ```bash
+   composer install
+   ```
 
-    ```bash
-    composer install
-    ```
+3. **Environment Setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-4. **Salin file `.env.example` menjadi `.env`**:
+4. **Database Configuration**
+   Update konfigurasi database di file `.env`:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=resepku_db
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
 
-    ```bash
-    cp .env.example .env
-    ```
+5. **Database Migration & Seeding**
+   ```bash
+   php artisan migrate
+   php artisan migrate:fresh --seed
+   ```
 
-5. **Konfigurasikan database** di file `.env` sesuai dengan pengaturan database Anda. Contoh konfigurasi:
+6. **Jalankan Server**
+   ```bash
+   php artisan serve
+   ```
 
-    ```
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=nama_database
-    DB_USERNAME=username
-    DB_PASSWORD=password
-    ```
+### 🔑 Cara Mendapatkan API Key
 
-6. **Generate application key**:
+1. **Registrasi Account**
+   - Buka: `http://127.0.0.1:8000/register`
+   - Isi form registrasi dengan data yang valid
 
-    ```bash
-    php artisan key:generate
-    ```
+2. **Login ke Dashboard**
+   - Buka: `http://127.0.0.1:8000/login`
+   - Masukkan kredensial yang telah didaftarkan
 
-7. **Migrasi database**:
+3. **Ambil API Key**
+   - Setelah login, buka: `http://127.0.0.1:8000/dashboard`
+   - Copy API Key dari section pengaturan
+   - Gunakan API Key ini untuk semua request API
 
-    ```bash
-    php artisan migrate
-    php artisan migrate:fresh --seed
-    ```
+## 🚀 Cara Menggunakan API
 
-8. **Jalankan server lokal**:
-    ```bash
-    php artisan serve
-    ```
+### Menggunakan cURL
 
-Sekarang Anda dapat mengakses API di `http://127.0.0.1:8000/login`.
+**Get All Recipes:**
+```bash
+curl -X GET "http://127.0.0.1:8000/api/resep" \
+  -H "apikey: your_api_key_here"
+```
 
-### Mengakses API
+**Search by Ingredient:**
+```bash
+curl -X GET "http://127.0.0.1:8000/api/resep?bahan=eggs" \
+  -H "apikey: your_api_key_here"
+```
 
-1. **Daftar dan Login**:
+### Menggunakan Postman
+1. Set method ke `GET`
+2. Masukkan URL endpoint
+3. Tambahkan header `apikey` dengan value API key Anda
+4. Send request
 
-    - Buka halaman `http://127.0.0.1:8000/register` untuk mendaftar.
-    - Setelah mendaftar, login di `http://127.0.0.1:8000/login`.
+## 📁 Struktur Project
 
-2. **Mengambil API Key**:
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   └── Api/
+│   │       └── ResepController.php
+│   ├── Middleware/
+│   │   └── ApiKeyMiddleware.php
+│   └── Requests/
+├── Models/
+│   ├── User.php
+│   └── Resep.php
+database/
+├── migrations/
+└── seeders/
+    └── ResepSeeder.php
+routes/
+└── api.php
+```
 
-    - Setelah login, buka halaman `http://127.0.0.1:8000/dashboard`.
-    - Di halaman dashboard, salin API Key Anda yang tersedia di bagian pengaturan.
+## 🔒 Security Features
 
-3. **Menggunakan API Key**:
-    - Tambahkan API Key yang Anda salin ke header setiap permintaan API sebagai berikut:
-        ```
-        apikey : apikey milikmu
-        ```
+- **API Key Authentication** - Setiap request harus menyertakan valid API key
+- **Rate Limiting** - Pembatasan jumlah request per menit
+- **Input Validation** - Validasi semua input untuk mencegah injection
+- **CORS Protection** - Konfigurasi CORS untuk keamanan browser
 
-Dengan mengikuti langkah-langkah di atas, Anda sekarang dapat menggunakan API dengan menambahkan API Key ke header setiap permintaan.
+## 📝 Response Format
+
+Semua response API menggunakan format JSON yang konsisten:
+
+**Success Response:**
+```json
+{
+  "message": "Success",
+  "data": [...],
+  "status": 200
+}
+```
+
+**Error Response:**
+```json
+{
+  "message": "Error message",
+  "error": "Detailed error information",
+  "status": 400
+}
+```
+
+## 🤝 Kontribusi
+
+Kontribusi sangat diterima! Silakan ikuti langkah berikut:
+
+1. Fork repository ini
+2. Buat branch fitur baru (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buat Pull Request
+
+## 📋 TODO / Roadmap
+
+- [x] Tambah endpoint untuk CRUD resep (POST, PUT, DELETE)
+- [ ] Implementasi pagination untuk response yang besar
+- [ ] Tambah filter berdasarkan kategori masakan
+- [ ] Implementasi rating dan review system
+- [ ] Tambah image upload untuk resep
+- [ ] API documentation dengan Swagger/OpenAPI
+
+## 📝 Lisensi
+
+Proyek ini menggunakan lisensi MIT. Lihat file `LICENSE` untuk detail lebih lanjut.
+
+
+## 🙏 Acknowledgments
+
+- Laravel Framework untuk foundation yang solid
+- Komunitas PHP Indonesia untuk inspiration
+- Open source contributors yang mendukung ekosistem Laravel
+
+---
+
+<div align="center">
+  <p>⭐ Jika proyek ini membantu Anda, jangan lupa berikan star!</p>
+  <p>Made with ❤️ for Food Lovers</p>
+</div>
